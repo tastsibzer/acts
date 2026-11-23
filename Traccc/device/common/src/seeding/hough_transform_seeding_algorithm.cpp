@@ -258,7 +258,8 @@ auto hough_transform_seeding_algorithm::operator()(
   copy().setup(selected_hits)->ignore();
 
   // Create the result object.
-  edm::seed_collection::buffer seed_buffer(total_maxima, mr().main);
+  edm::seed_collection::buffer seed_buffer(
+      total_maxima, mr().main, vecmem::data::buffer_type::resizable);
   copy().setup(vecmem::ignore_event, seed_buffer);
 
   make_seeds_kernel({total_maxima, spacepoint_r, nn_outcome, hits, matrices,

@@ -351,6 +351,9 @@ void hough_transform_seeding_algorithm::find_contributing_hits_kernel(
 
 void hough_transform_seeding_algorithm::compute_cottheta_matrix_kernel(
     const compute_cottheta_matrix_payload& payload) const {
+  if (payload.max_n_hits == 0u) {
+    return;
+  }
   const unsigned int n_blocks = payload.n_images;
   const dim3 n_threads(payload.max_n_hits, payload.max_n_hits);
   kernels::compute_cottheta_matrix<<<n_blocks, n_threads, 0,
