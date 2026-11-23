@@ -124,6 +124,11 @@ option(TRACCC_BUILD_EXAMPLES "Build the examples of traccc" TRUE)
 option(TRACCC_USE_SYSTEM_LIBS "Use system libraries be default" FALSE)
 option(TRACCC_USE_SPACK_LIBS "Use Spack libraries by default" FALSE)
 option(TRACCC_USE_ROOT "Use ROOT in the build (if needed)" TRUE)
+option(
+    TRACCC_USE_ONNXRUNTIME
+    "Run the Hough seeding peak filter network with ONNX Runtime"
+    FALSE
+)
 
 # Check CUDA and SYCL C++ standards
 if(${TRACCC_BUILD_CUDA} AND ${CMAKE_CUDA_STANDARD} LESS 20)
